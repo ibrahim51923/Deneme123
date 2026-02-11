@@ -1,0 +1,223 @@
+:root {
+  --text: #e9f0ff;
+  --panel: rgba(15, 23, 42, 0.55);
+  --panel-border: rgba(148, 163, 184, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 15% 20%, #334155 0%, transparent 40%),
+    radial-gradient(circle at 85% 10%, #3b82f6 0%, transparent 35%),
+    radial-gradient(circle at 50% 95%, #0ea5e9 0%, transparent 30%),
+    linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e293b 100%);
+  overflow-x: hidden;
+}
+
+.bg-glow {
+  position: fixed;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-glow-1 {
+  top: -70px;
+  left: -90px;
+  background: rgb(56 189 248 / 0.26);
+}
+
+.bg-glow-2 {
+  right: -120px;
+  bottom: -100px;
+  background: rgb(129 140 248 / 0.24);
+}
+
+.game-card {
+  position: relative;
+  z-index: 1;
+  width: min(980px, 95vw);
+  padding: 1rem;
+  border-radius: 24px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 22px 60px rgb(2 6 23 / 0.58),
+    inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hud h1 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.7vw, 1.9rem);
+  font-weight: 700;
+}
+
+.scoreboard {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: rgb(15 23 42 / 0.8);
+  border: 1px solid rgb(148 163 184 / 0.25);
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.time-track {
+  margin: 0.8rem 0 1rem;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgb(15 23 42 / 0.55);
+  overflow: hidden;
+  border: 1px solid rgb(148 163 184 / 0.2);
+}
+
+#timeBar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #22d3ee, #3b82f6, #6366f1);
+  transition: width 0.3s ease;
+}
+
+#playground {
+  position: relative;
+  height: min(64vh, 520px);
+  border-radius: 16px;
+  overflow: hidden;
+  touch-action: none;
+  border: 1px solid rgb(148 163 184 / 0.28);
+  background:
+    radial-gradient(circle at 20% 15%, rgb(255 255 255 / 0.14) 0 12%, transparent 13%),
+    radial-gradient(circle at 80% 30%, rgb(255 255 255 / 0.1) 0 10%, transparent 11%),
+    linear-gradient(180deg, #2563eb 0%, #1d4ed8 30%, #0f172a 100%);
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  cursor: crosshair;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    inset -8px -12px 16px rgb(0 0 0 / 0.28),
+    inset 8px 10px 10px rgb(255 255 255 / 0.25),
+    0 8px 20px rgb(2 6 23 / 0.35);
+  animation: rise linear forwards;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  top: 22%;
+  left: 25%;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.85);
+}
+
+.bubble.waiting {
+  animation: idle 1.4s ease-in-out infinite alternate;
+}
+
+.pop {
+  animation: pop 0.18s ease-out forwards;
+}
+
+.controls {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.controls label {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  background: rgb(15 23 42 / 0.72);
+  border: 1px solid rgb(148 163 184 / 0.23);
+  border-radius: 999px;
+  padding: 0.35rem 0.72rem;
+  font-size: 0.93rem;
+}
+
+select,
+button {
+  border-radius: 999px;
+  border: none;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.95rem;
+}
+
+select {
+  color: #f8fafc;
+  background: #0f172a;
+  border: 1px solid rgb(148 163 184 / 0.25);
+}
+
+button {
+  cursor: pointer;
+  font-weight: 700;
+  background: linear-gradient(90deg, #22d3ee, #60a5fa);
+  color: #0f172a;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#hint {
+  margin: 0.9rem 0 0;
+  text-align: center;
+  color: #c7d2fe;
+  font-size: 0.94rem;
+}
+
+.game-over {
+  color: #fecaca;
+}
+
+@keyframes rise {
+  from { transform: translate(-50%, 10%); }
+  to { transform: translate(-50%, -50%); }
+}
+
+@keyframes idle {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -54%) scale(1.03); }
+}
+
+@keyframes pop {
+  to {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}

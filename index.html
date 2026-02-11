@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baloncuk Patlatma</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <main class="game-card">
+      <header class="hud">
+        <h1>🫧 Baloncuk Patlatma</h1>
+        <div class="scoreboard">
+          <div class="pill">Skor: <strong id="score">0</strong></div>
+          <div class="pill">Süre: <strong id="time">45</strong>s</div>
+          <div class="pill">Seviye: <strong id="difficultyLabel">Normal</strong></div>
+        </div>
+      </header>
+
+      <div class="time-track" aria-hidden="true">
+        <div id="timeBar"></div>
+      </div>
+
+      <section id="playground" aria-label="Oyun Alanı"></section>
+
+      <footer class="controls">
+        <label>
+          Zorluk
+          <select id="difficultySelect">
+            <option value="easy">Kolay</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Zor</option>
+          </select>
+        </label>
+
+        <label class="check-label">
+          <input type="checkbox" id="soundToggle" checked />
+          Ses Açık
+        </label>
+
+        <button id="startBtn">Oyunu Başlat</button>
+      </footer>
+
+      <p id="hint">Baloncuklar yukarı çıkar ve patlatana kadar kalır. Üzerine gel veya dokun, hemen patlasın.</p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
