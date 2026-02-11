@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baloncuk Patlatma</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game">
+      <header class="hud">
+        <h1>Baloncuk Patlatma</h1>
+        <div class="scoreboard">
+          <span>Skor: <strong id="score">0</strong></span>
+          <span>Süre: <strong id="time">30</strong>s</span>
+          <span>Can: <strong id="lives">5</strong></span>
+          <span>Seviye: <strong id="difficultyLabel">Kolay</strong></span>
+        </div>
+      </header>
+
+      <section id="playground" aria-label="Oyun Alanı"></section>
+
+      <footer class="controls">
+        <label>
+          Zorluk
+          <select id="difficultySelect">
+            <option value="easy">Kolay</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Zor</option>
+          </select>
+        </label>
+        <label class="check-label">
+          <input type="checkbox" id="soundToggle" checked />
+          Ses Açık
+        </label>
+        <button id="startBtn">Oyunu Başlat</button>
+      </footer>
+
+      <p id="hint">İpucu: Baloncuklara tıklamadan, mouse veya dokunma ile değdirerek patlat.</p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
